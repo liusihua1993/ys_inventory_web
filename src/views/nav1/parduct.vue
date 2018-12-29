@@ -93,11 +93,11 @@
           >
             <el-input type="textarea" v-model="formLabelAlign.productDescription"></el-input>
           </el-form-item>
-          <el-form-item label="产品模板">
-            <el-select v-model="formLabelAlign.productTempId" placeholder="请选择产品模板">
-              <el-option v-for="(item, index) in templaList" :key="index" :label="item.productTempName" :value="item.productTempId"></el-option>
-            </el-select>
-          </el-form-item>
+          <!--<el-form-item label="产品模板">-->
+            <!--<el-select v-model="formLabelAlign.productTempId" placeholder="请选择产品模板">-->
+              <!--<el-option v-for="(item, index) in templaList" :key="index" :label="item.productTempName" :value="item.productTempId"></el-option>-->
+            <!--</el-select>-->
+          <!--</el-form-item>-->
             <el-button @click="dialogVisible = false">取 消</el-button>
             <el-button type="primary" @click="submitForm('formLabelAlign')">确 定</el-button>
         </el-form>

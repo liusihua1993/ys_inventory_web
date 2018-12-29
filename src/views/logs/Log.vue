@@ -54,11 +54,6 @@
             show-overflow-tooltip
             label="IP地址">
           </el-table-column>
-          <el-table-column
-            prop="createUser"
-            show-overflow-tooltip
-            label="创建人">
-          </el-table-column>
         </el-table>
         <el-pagination
           @size-change="handleSizeChange"

@@ -165,10 +165,10 @@ export default {
     },
     numsave(val) {
       this.dialogVisible1 = false;
-      let num = parseInt(this.forms.materialNum);
+      //let num = parseInt(this.forms.materialNum);
       let x = {
         "materialId": this.forms.materialId,
-        "materialNum": num
+        "materialNum": this.forms.materialNum
       }
       updateMater(x).then((res) => {
         console.log(res)

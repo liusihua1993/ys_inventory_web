@@ -41,7 +41,7 @@
         <el-form-item>
           <el-button type="primary" @click="onSubmit('form')">保存</el-button>
           <el-button @click="$router.go(-1)">取消</el-button>
-          <el-button @click="addDomain" disabled>新增原料数量</el-button>
+          <el-button @click="addDomain">新增原料种类</el-button>
         </el-form-item>
       </el-form>
     </section>
@@ -79,6 +79,7 @@ export default {
               message: '修改成功',
               type: 'success'
             });
+            this.$router.push('/parductTemplate');
           })
         } else {
           return false;

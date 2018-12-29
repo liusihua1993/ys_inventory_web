@@ -48,6 +48,13 @@ export const productCreate = params => {
         'Content-Type': 'application/json;charset=UTF-8'
     }})
 }
+// 产品出库
+export const productOutgoing = params => {
+    return instance.post(`${oauth}/product/productOutgoing`, params, {headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        }})
+}
+
 export const updateMater = params => {
     return instance.post(`${oauth}/material/updateMaterialNumber`, params, {headers: {
         'Content-Type': 'application/json;charset=UTF-8'

@@ -39,8 +39,9 @@
                     <el-table-column
                             fixed="right"
                             label="操作"
-                            width="150">
+                            width="200">
                         <template slot-scope="scope">
+                            <el-button @click="viewProductStorage(scope.row)" type="text" size="small">入库</el-button>
                             <el-button @click="viewProductOutgoing(scope.row)" type="text" size="small">出库</el-button>
                             <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
                             <el-button type="text" size="small" @click="deleteproduct(scope.row)">删除</el-button>
@@ -104,6 +105,50 @@
             </el-form>
         </el-dialog>
 
+        <!-- 入库 -->
+        <el-dialog
+                title="入库"
+                :visible.sync="dialogVisible2"
+                width="30%"
+                :before-close="handleClose">
+            <el-form ref="forms" :label-position="labelPosition" label-width="120px" :model="forms">
+                <el-form-item
+                        label="产品库存数量"
+                        prop="productNum"
+                        :rules="[
+              { required: true, message: '数量不能为空'},
+              { type: 'number', message: '数量必须为数字值'}
+            ]"
+                >
+                    <el-input disabled v-model.number="forms.productNums"></el-input>
+                </el-form-item>
+
+                <el-form-item label="产品模板"
+                              :rules="[
+              { required: true, message: '产品模板不能为空'},
+            ]"
+                >
+                    <el-select v-model="forms.productTempId" filterable placeholder="请选择">
+                        <el-option v-for="(item, index) in templaList" :key="index" :label="item.productTempName"
+                                   :value="item.productTempId"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item
+                        label="产品入库数量"
+                        prop="productNum"
+                        :rules="[
+              { required: true, message: '数量不能为空'},
+              { type: 'number', message: '数量必须为数字值'}
+            ]"
+                >
+                    <el-input v-model.number="forms.productNum"></el-input>
+                </el-form-item>
+                <el-button size="mini" @click="dialogVisible2 = false">取 消</el-button>
+                <el-button size="mini" type="primary" @click="productStorage('forms')">确 定</el-button>
+            </el-form>
+        </el-dialog>
+
         <!-- 出库 -->
         <el-dialog
                 title="出库"
@@ -139,7 +184,7 @@
 </template>
 
 <script>
-    import {productOutgoing,productList, productTempList, productCreate, deleteproduct} from '../../api/api'
+    import {productStorage,productOutgoing, productList, productTempList, productCreate, deleteproduct} from '../../api/api'
 
     export default {
         data() {
@@ -151,6 +196,7 @@
                 total: 0,
                 dialogVisible: false, // 弹框显示隐藏,
                 dialogVisible1: false, // 弹框显示隐藏,
+                dialogVisible2: false,
                 labelPosition: 'left',
                 formLabelAlign: {
                     productName: '',
@@ -162,11 +208,33 @@
                 forms: {
                     materialId: '',
                     productNum: 0,
+                    productTempId: '',
                     productNums: ''
                 }
             }
         },
         methods: {
+            viewProductStorage(val) {
+                this.dialogVisible2 = true;
+                this.forms.productId = val.productId;
+                this.forms.productNums = val.productNum;
+            },
+            productStorage(val) {
+                this.dialogVisible2 = false;
+                let x = {
+                    "productId": this.forms.productId,
+                    "productNum": this.forms.productNum,
+                    "productTempId": this.forms.productTempId
+                }
+                productStorage(x).then((res) => {
+                    console.log(res)
+                    this.$message({
+                        message: '入库成功',
+                        type: 'success'
+                    });
+                    this.list();
+                })
+            },
             viewProductOutgoing(val) {
                 this.dialogVisible1 = true;
                 this.forms.productId = val.productId;

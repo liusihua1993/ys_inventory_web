@@ -8,7 +8,8 @@
                         :picker-options="pickerOptions2"
                         range-separator="至"
                         start-placeholder="开始日期"
-                        end-placeholder="结束日期">
+                        end-placeholder="结束日期"
+                        value-format="yyyy-MM-dd HH:mm:ss">
                 </el-date-picker>
             </el-form-item>
 
@@ -121,7 +122,7 @@
                 this.logList();
             },
             logList() {
-                let x = `page=${this.page}&limit=${this.limit}&moduleName=${this.formInline.templateName}&operator=${this.formInline.user}&operationTimeStart=${this.value4[0] || ''}&operationTimeEnd=${this.value4[1] || ''}`
+                let x = `page=${this.page}&limit=${this.limit}&moduleame=${this.formInline.templateName}&operator=${this.formInline.user}&operationTimeStart=${this.value4[0] || ''}&operationTimeEnd=${this.value4[1] || ''}`
                 logList(x).then((res) => {
                     let datas = res.data;
                     this.total = datas.total;

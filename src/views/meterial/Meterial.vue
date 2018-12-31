@@ -7,6 +7,7 @@
         <el-input v-model="secchInput" class="secchInput" clearable placeholder="请输入原料名称"></el-input>
         <el-button @click="serchName">搜索</el-button>
         <el-button @click="createMeterial">新增</el-button>
+        <el-button @click="exportMeterialInitExcel">数据模板</el-button>
       </el-col>
       <!-- 表格 -->
       <el-col :span="24">
@@ -236,6 +237,9 @@ export default {
     createMeterial() {
       this.dialogVisible = true
     },
+      exportMeterialInitExcel(){
+          window.location.href="http://47.104.172.218:8087/excel/materialInitExport"
+      },
     handleClose(done) {
       this.$confirm('确认关闭？')
         .then(_ => {

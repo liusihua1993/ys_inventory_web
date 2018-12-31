@@ -19,7 +19,7 @@
             prop="productTempName"
             label="产品模板名称"
             show-overflow-tooltip
-            width="150">
+            width="200">
           </el-table-column>
           <el-table-column
             prop="createTime"
@@ -34,7 +34,7 @@
           <el-table-column
             fixed="right"
             label="操作"
-            width="100">
+            width="150">
             <template slot-scope="scope">
               <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
               <el-button type="text" size="small" @click="deleteProductTemp(scope.row)">删除</el-button>

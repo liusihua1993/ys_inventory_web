@@ -7,6 +7,8 @@
                 <el-input v-model="secchInput" class="secchInput" clearable placeholder="请输入产品名称"></el-input>
                 <el-button @click="serchName">搜索</el-button>
                 <el-button @click="createMeterial">新增</el-button>
+                <el-button @click="exportProductInitExcel">数据模板</el-button>
+                <!--<el-button v-on:click="importData($event)">上传数据</el-button>-->
             </el-col>
             <!-- 表格 -->
             <el-col :span="24">
@@ -60,7 +62,7 @@
                 </el-pagination>
             </el-col>
         </el-col>
-        <!-- 弹框 -->
+        <!-- 新增 -->
         <el-dialog
                 title="新增"
                 :visible.sync="dialogVisible"
@@ -95,11 +97,7 @@
                 >
                     <el-input type="textarea" v-model="formLabelAlign.productDescription"></el-input>
                 </el-form-item>
-                <!--<el-form-item label="产品模板">-->
-                <!--<el-select v-model="formLabelAlign.productTempId" placeholder="请选择产品模板">-->
-                <!--<el-option v-for="(item, index) in templaList" :key="index" :label="item.productTempName" :value="item.productTempId"></el-option>-->
-                <!--</el-select>-->
-                <!--</el-form-item>-->
+
                 <el-button @click="dialogVisible = false">取 消</el-button>
                 <el-button type="primary" @click="submitForm('formLabelAlign')">确 定</el-button>
             </el-form>
@@ -145,7 +143,8 @@
                     <el-input v-model.number="forms.productNum"></el-input>
                 </el-form-item>
                 <el-button size="mini" @click="dialogVisible2 = false">取 消</el-button>
-                <el-button size="mini" type="primary" @click="productStorage('forms')">确 定</el-button>
+                <el-button size="mini" type="primary" @click="productStorage('forms')" :disabled="isDisable">确 定
+                </el-button>
             </el-form>
         </el-dialog>
 
@@ -177,14 +176,22 @@
                     <el-input v-model.number="forms.productNum"></el-input>
                 </el-form-item>
                 <el-button size="mini" @click="dialogVisible1 = false">取 消</el-button>
-                <el-button size="mini" type="primary" @click="productOutgoing('forms')">确 定</el-button>
+                <el-button size="mini" type="primary" @click="productOutgoing('forms')" :disabled="isDisable">确 定
+                </el-button>
             </el-form>
         </el-dialog>
     </div>
 </template>
 
 <script>
-    import {productStorage,productOutgoing, productList, productTempList, productCreate, deleteproduct} from '../../api/api'
+    import {
+        productStorage,
+        productOutgoing,
+        productList,
+        productTempList,
+        productCreate,
+        deleteproduct
+    } from '../../api/api'
 
     export default {
         data() {
@@ -210,7 +217,8 @@
                     productNum: 0,
                     productTempId: '',
                     productNums: ''
-                }
+                },
+                disabled: false
             }
         },
         methods: {
@@ -221,6 +229,7 @@
             },
             productStorage(val) {
                 this.dialogVisible2 = false;
+                this.isDisable = true;
                 let x = {
                     "productId": this.forms.productId,
                     "productNum": this.forms.productNum,
@@ -232,6 +241,7 @@
                         message: '入库成功',
                         type: 'success'
                     });
+                    this.isDisable = false;
                     this.list();
                 })
             },
@@ -242,6 +252,7 @@
             },
             productOutgoing(val) {
                 this.dialogVisible1 = false;
+                this.isDisable = true;
                 let x = {
                     "productId": this.forms.productId,
                     "productNum": this.forms.productNum
@@ -252,6 +263,7 @@
                         message: '出库成功',
                         type: 'success'
                     });
+                    this.isDisable = false;
                     this.list();
                 })
             },
@@ -288,6 +300,10 @@
             serchName() {
                 this.list();
             },
+            exportProductInitExcel(){
+                window.location.href="http://47.104.172.218:8087/excel/productInitExport"
+            },
+
             // 新增原料
             createMeterial() {
                 this.dialogVisible = true
@@ -301,6 +317,7 @@
                     });
             },
             submitForm(formName) {
+                this.dialogVisible = false;
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         let x = this.formLabelAlign;

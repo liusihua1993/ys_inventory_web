@@ -79,7 +79,7 @@
                   {required: true, message: '请选择原料', trigger: 'change'}
                 ]
               ">
-              <el-select v-model="domain.materialId" placeholder="请选择原料">
+              <el-select v-model="domain.materialId" filterable placeholder="请选择原料">
                 <el-option v-for="(item, index) in templaList" :key="index" :label="item.materialName" :value="item.materialId"></el-option>
               </el-select>
               <el-button @click.prevent="removeDomain(domain)">-</el-button>

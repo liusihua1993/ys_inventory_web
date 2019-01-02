@@ -28,7 +28,7 @@ export default new VueRouter({
             children: [
                 { 
                     path: '/', 
-                    component: resolve => require(['./views/nav1/parduct.vue'], resolve),  
+                    component: resolve => require(['./views/product/product.vue'], resolve),
                     name: '产品',
                     redirect: '/product'
                 },
@@ -42,7 +42,7 @@ export default new VueRouter({
             leaf: true, // 没有子级为true，相反为false
             iconCls: require('./assets/images/nav/ic_pc_shouye.png'),
             children: [
-                { path: '/product', component: resolve => require(['./views/nav1/parduct.vue'], resolve),  name: '产品' },
+                { path: '/product', component: resolve => require(['./views/product/product.vue'], resolve),  name: '产品' },
             ]
         },
         // 产品详情
@@ -52,7 +52,7 @@ export default new VueRouter({
             name: '产品详情',
             hidden: true,
             children: [
-                { path: '/productDetails', component: resolve => require(['./views/nav1/parductDetails.vue'], resolve),  name: '产品详情' },
+                { path: '/productDetails', component: resolve => require(['./views/product/productDetails.vue'], resolve),  name: '产品详情' },
             ]
         },
         //产品模板
@@ -63,7 +63,7 @@ export default new VueRouter({
             leaf: true, // 没有子级为true，相反为false
             iconCls: require('./assets/images/nav/ic_pc_shouye.png'),
             children: [
-                { path: '/parductTemplate', component: resolve => require(['./views/parductTemplate/parductTemplate.vue'], resolve),  name: '产品模板' },
+                { path: '/productTemplate', component: resolve => require(['./views/productTemplate/productTemplate.vue'], resolve),  name: '产品模板' },
             ]
         },
          // 产品模板详情
@@ -73,7 +73,7 @@ export default new VueRouter({
             name: '产品模板详情',
             hidden: true,
             children: [
-                { path: '/parductTemplate/TemplateDetails', component: resolve => require(['./views/parductTemplate/TemplateDetails.vue'], resolve),  name: '产品模板详情' },
+                { path: '/productTemplate/TemplateDetails', component: resolve => require(['./views/productTemplate/TemplateDetails.vue'], resolve),  name: '产品模板详情' },
             ]
         },
         // // 产品详情
@@ -83,7 +83,7 @@ export default new VueRouter({
         //     name: '产品模板',
         //     hidden: true,
         //     children: [
-        //         { path: '/productDetails', component: resolve => require(['./views/parductTemplate/parductDetails.vue'], resolve),  name: '产品模板' },
+        //         { path: '/productDetails', component: resolve => require(['./views/productTemplate/productDetails.vue'], resolve),  name: '产品模板' },
         //     ]
         // },
         // 原料

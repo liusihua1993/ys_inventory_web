@@ -160,7 +160,7 @@
             },
             handleClick(row) {
                 this.$router.push({
-                    path: '/parductTemplate/TemplateDetails',
+                    path: '/productTemplate/TemplateDetails',
                     query: {
                         id: row.productTempId
                     }

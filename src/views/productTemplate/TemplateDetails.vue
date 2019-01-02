@@ -84,7 +84,7 @@
                                 type: 'success'
                             });
                             //this.isDisable = false;
-                            this.$router.push('/parductTemplate');
+                            this.$router.push('/productTemplate');
                         }).catch(error => {
                             this.$message.error(error);
                             console.log(error, "失败了");
@@ -120,7 +120,7 @@
             },
         },
         created() {
-            this.$store.state.defaultRouter = '/parductTemplate';
+            this.$store.state.defaultRouter = '/productTemplate';
         },
         mounted() {
             this.id = this.$route.query.id;

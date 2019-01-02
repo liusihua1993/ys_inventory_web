@@ -161,7 +161,7 @@ import util from '../common/js/util'
 			if (this.$store.state.defaultRouter == '') {
 				this.$store.state.defaultRouter = this.$route.path;
 			}	
-			// /parductTemplate/TemplateDetails
+			// /productTemplate/TemplateDetails
 			// if (this.$route.path == '') {
 				
 			// }

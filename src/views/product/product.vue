@@ -2,10 +2,10 @@
     <div class="parduct">
         <el-col :span="24">
             <!-- 头部筛选条件 -->
-            <el-col :span="24" class="secchMain">
-                <p class="secchText">产品名称</p>
-                <el-input v-model="secchInput" class="secchInput" clearable placeholder="请输入产品名称"></el-input>
-                <el-button @click="serchName">搜索</el-button>
+            <el-col :span="24" class="searchMain">
+                <p class="searchText">产品名称</p>
+                <el-input v-model="secchInput" class="searchInput" clearable placeholder="请输入产品名称"></el-input>
+                <el-button @click="search">搜索</el-button>
                 <el-button @click="createMeterial">新增</el-button>
                 <el-button @click="exportProductStockExcel">库存导出</el-button>
                 <el-button @click="exportProductInitExcel">数据模板</el-button>
@@ -306,7 +306,7 @@
                 console.log(`当前页: ${val}`);
             },
             // 点击搜索
-            serchName() {
+            search() {
                 this.list();
             },
             exportProductStockExcel() {
@@ -384,17 +384,17 @@
         padding: 20px;
         height: 100%;
         min-width: 700px;
-        .secchMain {
+        .searchMain {
             display: flex;
             align-items: center;
             justify-content: left;
             margin-bottom: 20px;
-            .secchText {
+            .searchText {
                 padding-right: 20px;
             }
-            .secchInput {
+            .searchInput {
                 min-width: 200px;
-                max-width: 60%;
+                max-width: 55%;
                 margin-right: 20px;
             }
 

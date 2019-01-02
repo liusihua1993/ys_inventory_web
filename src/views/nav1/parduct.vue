@@ -218,7 +218,7 @@
                     productTempId: '',
                     productNums: ''
                 },
-                disabled: false
+                isDisable: false
             }
         },
         methods: {
@@ -243,6 +243,10 @@
                     });
                     this.isDisable = false;
                     this.list();
+                }).catch(error => {
+                    this.$message.error(error);
+                    console.log(error, "失败了");
+                    this.isDisable = false;
                 })
             },
             viewProductOutgoing(val) {
@@ -265,6 +269,10 @@
                     });
                     this.isDisable = false;
                     this.list();
+                }).catch(error => {
+                    this.$message.error(error);
+                    console.log(error, "失败了");
+                    this.isDisable = false;
                 })
             },
             list() {
@@ -300,8 +308,8 @@
             serchName() {
                 this.list();
             },
-            exportProductInitExcel(){
-                window.location.href="http://47.104.172.218:8087/excel/productInitExport"
+            exportProductInitExcel() {
+                window.location.href = "http://47.104.172.218:8087/excel/productInitExport"
             },
 
             // 新增原料

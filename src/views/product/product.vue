@@ -56,7 +56,7 @@
                         @size-change="handleSizeChange"
                         @current-change="handleCurrentChange"
                         :current-page="page"
-                        :page-sizes="[10, 15, 20, 50]"
+                        :page-sizes="[10, 20, 50]"
                         :page-size="limit"
                         layout="total, sizes, prev, pager, next, jumper"
                         :total="total">
@@ -200,7 +200,7 @@
                 tableData: [],
                 secchInput: '', // 搜索框内容
                 page: 1, // 当前页,
-                limit: 0,
+                limit: 10,
                 total: 0,
                 dialogVisible: false, // 弹框显示隐藏,
                 dialogVisible1: false, // 弹框显示隐藏,
@@ -300,9 +300,13 @@
                 })
             },
             handleSizeChange(val) {
+                this.limit=val;
+                this.list();
                 console.log(`每页 ${val} 条`);
             },
             handleCurrentChange(val) {
+                this.page=val;
+                this.list();
                 console.log(`当前页: ${val}`);
             },
             // 点击搜索

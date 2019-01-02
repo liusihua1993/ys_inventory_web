@@ -7,6 +7,7 @@
                 <el-input v-model="secchInput" class="secchInput" clearable placeholder="请输入产品名称"></el-input>
                 <el-button @click="serchName">搜索</el-button>
                 <el-button @click="createMeterial">新增</el-button>
+                <el-button @click="exportProductStockExcel">库存导出</el-button>
                 <el-button @click="exportProductInitExcel">数据模板</el-button>
                 <!--<el-button v-on:click="importData($event)">上传数据</el-button>-->
             </el-col>
@@ -308,6 +309,10 @@
             serchName() {
                 this.list();
             },
+            exportProductStockExcel() {
+                window.location.href = "http://47.104.172.218:8087/excel/productStockExport"
+            },
+
             exportProductInitExcel() {
                 window.location.href = "http://47.104.172.218:8087/excel/productInitExport"
             },

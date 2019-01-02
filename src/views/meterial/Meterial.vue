@@ -7,6 +7,7 @@
                 <el-input v-model="secchInput" class="secchInput" clearable placeholder="请输入原料名称"></el-input>
                 <el-button @click="serchName">搜索</el-button>
                 <el-button @click="createMeterial">新增</el-button>
+                <el-button @click="exportMeterialStockExcel">库存导出</el-button>
                 <el-button @click="exportMeterialInitExcel">数据模板</el-button>
             </el-col>
             <!-- 表格 -->
@@ -43,7 +44,9 @@
                             width="200">
                         <template slot-scope="scope">
                             <el-button @click="toDetails(scope.row)" type="text" size="small">编辑</el-button>
-                            <el-button @click="metnum(scope.row)" type="text" size="small" :disabled="isDisable">修改原料数量</el-button>
+                            <el-button @click="metnum(scope.row)" type="text" size="small" :disabled="isDisable">
+                                修改原料数量
+                            </el-button>
                             <el-button type="text" size="small" @click="deleteMeterial(scope.row)">删除</el-button>
                         </template>
                     </el-table-column>
@@ -245,6 +248,11 @@
             // 新增原料
             createMeterial() {
                 this.dialogVisible = true
+            },
+
+
+            exportMeterialStockExcel() {
+                window.location.href = "http://192.168.3.209:8087/excel/materialStockExport"
             },
             exportMeterialInitExcel() {
                 window.location.href = "http://47.104.172.218:8087/excel/materialInitExport"

@@ -256,7 +256,7 @@
 
 
             exportMeterialStockExcel() {
-                window.location.href = "http://192.168.3.209:8087/excel/materialStockExport"
+                window.location.href = "http://47.104.172.218:8087/excel/materialStockExport"
             },
             exportMeterialInitExcel() {
                 window.location.href = "http://47.104.172.218:8087/excel/materialInitExport"

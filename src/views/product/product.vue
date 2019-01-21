@@ -314,11 +314,11 @@
                 this.list();
             },
             exportProductStockExcel() {
-                window.location.href = "http://47.104.172.218:8087/excel/productStockExport"
+                window.location.href = this.$store.state.exportProductStockExcel
             },
 
             exportProductInitExcel() {
-                window.location.href = "http://47.104.172.218:8087/excel/productInitExport"
+                window.location.href = this.$store.state.exportProductInitExcel
             },
 
             // 新增原料

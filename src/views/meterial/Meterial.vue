@@ -256,10 +256,10 @@
 
 
             exportMeterialStockExcel() {
-                window.location.href = "http://47.104.172.218:8087/excel/materialStockExport"
+                window.location.href = this.$store.state.exportMeterialStockExcel
             },
             exportMeterialInitExcel() {
-                window.location.href = "http://47.104.172.218:8087/excel/materialInitExport"
+                window.location.href = this.$store.state.exportMeterialInitExcel
             },
             handleClose(done) {
                 this.$confirm('确认关闭？')

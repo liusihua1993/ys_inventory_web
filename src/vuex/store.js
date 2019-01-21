@@ -8,7 +8,11 @@ Vue.use(Vuex)
 
 // 应用初始状态
 const state = {
-    defaultRouter: ''
+    defaultRouter: '',
+    exportProductStockExcel: 'http://47.104.172.218:8087/excel/productStockExport',
+    exportProductInitExcel: 'http://47.104.172.218:8087/excel/productInitExport',
+    exportMeterialStockExcel: 'http://47.104.172.218:8087/excel/materialStockExport',
+    exportMeterialInitExcel: 'http://47.104.172.218:8087/excel/materialInitExport'
 }
 
 // 定义所需的 mutations

@@ -47,7 +47,7 @@ import {isvalidPhone} from '../api/phone'
 	}
 	var validCode = (rule, value, callback) => {
 		if (!value) {
-			callback(new Error('请输入验证码'));
+			callback(new Error('请输入密码'));
 		} else {
 			callback();
 		}
